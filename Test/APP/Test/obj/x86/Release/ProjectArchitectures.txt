@@ -1,0 +1,2 @@
+C:\Users\Nakahara Kazuma\Documents\Test\APP\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\Nakahara Kazuma\Documents\Test\APP\Test\Test.csproj;x86
