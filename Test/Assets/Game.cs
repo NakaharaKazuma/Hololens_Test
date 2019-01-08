@@ -15,6 +15,7 @@ using CI.WSANative.Security;
 using CI.WSANative.Serialisers;
 using CI.WSANative.Twitter;
 using UnityEngine;
+using System.IO;
 
 
 public class Game : MonoBehaviour {
@@ -33,31 +34,11 @@ public class Game : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            WSANativeFilePicker.PickSingleFile("Select", WSAPickerViewMode.Thumbnail, WSAPickerLocationId.PicturesLibrary, new[] {".txt"}, result =>
-            {
-                fileString = "aaa";
-                if (result != null)
-                {
-#pragma warning disable 0219
-                    fileBytes = result.ReadBytes();
-                    fileString = result.ReadText();
-#pragma warning restore 0219
-                }
-            });
-        }
-        scoreLabel.text = fileString;
-        if (Input.GetMouseButtonDown(1))
-        {
-            WSANativeFilePicker.PickSaveFile("Save", ".txt", "Test Text File", WSAPickerLocationId.DocumentsLibrary, new List<KeyValuePair<string, IList<string>>>() { new KeyValuePair<string, IList<string>>("Text Files", new List<string>() { ".txt" }) }, result =>
-            {
-                if (result != null)
-                {
-                    //result.WriteBytes(new byte[2]);
-                    result.WriteText("Hello World");
-                }
-            });
-        }
+            string path = "/data/text.txt";
+            StreamWriter writer = new System.IO.StreamWriter(path, false);
+            writer.Write("Hello world\n");
+        }        
     }
 }
